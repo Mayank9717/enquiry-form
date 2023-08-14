@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Thankyou Page</title>
+  </head>
+  <body>
+    <section class="heros">
+      <div class="containers">
+        <div>
+          <div class="thankyou">
+            <div class="thankyou__icon">
+              <i class="fa fa-check-circle icon"></i>
+            </div>
+            <div class="thankyou__title">Thank you!</div>
+            <div class="thankyou__subtitle">
+              Thanks a ton for taking out your precious time and for completing
+              the survey.
+            </div>
+            <p class="dynamic" id="get_email"></p>
+            <p class="dynamic" id="get_mobile"></p>
+            <button class="btns">
+              <a href="index.html">Go Back</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      const dataFetch = JSON.parse(sessionStorage.getItem("data"));
+      document.getElementById(
+        "get_email"
+      ).innerHTML = `Email Address: ${dataFetch.email}`;
+      document.getElementById(
+        "get_mobile"
+      ).innerHTML = `Contact Number: ${dataFetch.phone}`;
+    </script>
+  </body>
+</html>

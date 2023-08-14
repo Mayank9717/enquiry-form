@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>onsite survey</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/main.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="open" class="loaders-container">
+      <div class="loaders"></div>
+      <p class="text-lg">Loading...</p>
+    </div>
+    <section class="ptb-120 hero">
+      <div class="container">
+        <div class="row">
+          <div class="f_section">
+            <div class="img_section"></div>
+          </div>
+          <div class="s_section">
+            <div>
+              <div class="logo_section">
+                <img src="./img/WebEngage-Logo-R.webp" width="20" alt="" />
+              </div>
+              <h3>Get a Free</h3>
+              <p>consultation with an expert</p>
+              <form id="survey-form">
+                <div class="text_1">
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    placeholder="Enter your email"
+                  />
+                  <div class="error" id="email-error"></div>
+                </div>
+                <div class="text_1">
+                  <input
+                    autocomplete="nope"
+                    type="tel"
+                    name="requested_phone"
+                    onkeypress="return isNumberKey(event)"
+                    class="form-control"
+                    id="requested_phone"
+                    placeholder="99999XXXXX"
+                    required
+                  />
+                  <div class="error" id="phone-error"></div>
+                </div>
+                <button id="submit-btn">TALK TO US</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      function isNumberKey(evt) {
+        var value = phoneInput.getNumber();
+
+        if (value.includes("+91")) {
+          $("#requested_phone").attr("maxlength", "10");
+        } else {
+          $("#requested_phone").attr("maxlength", "10");
+        }
+        var charCode = evt.which ? evt.which : evt.keyCode;
+        return !(charCode > 31 && (charCode < 48 || charCode > 57));
+      }
+
+      function isNotNumberKey(evt) {
+        if (value.includes("+91")) {
+          $("#requested_phone").attr("maxlength", "10");
+        } else {
+          $("#requested_phone").attr("maxlength", "10");
+        }
+        var charCode = evt.which ? evt.which : evt.keyCode;
+        return charCode > 31 && (charCode < 48 || charCode > 57);
+      }
+      const phoneInputField = document.querySelector("#requested_phone");
+      const phoneInput = window.intlTelInput(phoneInputField, {
+        preferredCountries: ["in", "us", "bd", "ae", "gb", "lk", "np", "kr"],
+        initialCountry: "in",
+        utilsScript:
+          "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        separateDialCode: true,
+        getNumber: true,
+      });
+    </script>
+  </body>
+</html>
